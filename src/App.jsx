@@ -26,7 +26,9 @@ const [step,setStep]=useState(1)
         <div className={`${step>=3 ? "active" :"step-3"}`}>3</div>
       </div>
 
-      <p className="message"></p>
+      <p className="message">
+        step{step}:{messages[step-1]}
+      </p>
 
       <div className="buttons">
         <button className="previous" style={{backgroundColor:"#7950f2" , color:"#fff"}} onClick={handleprev}>Previous</button>
