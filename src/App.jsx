@@ -1,4 +1,5 @@
 import { useState } from "react";
+ 
 
 
 const messages = [
@@ -8,27 +9,28 @@ const messages = [
 ];
 
 export default function App() {
-  // let clr1={color:"#7950f2"}
-  const[ColorMe,setColorMe]=useState("#f7f7f7")
-  const nextBtn=()=>{
-    return(
-      setColorMe()
-    )
+const [step,setStep]=useState(1)
+
+  const handlenext=()=>{
+    setStep(step+1)
+  }
+  const handleprev=()=>{
+    setStep(step-1)
   }
  
   return (
-    <div class="steps">
-      <div class="numbers">
-        <div class="step-1" style={{backgroundColor:"#7950f2"}}> 1</div>
-      <div class="step-2" style={{backgroundColor:ColorMe}}>2</div>
-        <div class="step-3">3</div>
+    <div className="steps">
+      <div className="numbers">
+        <div className={`${step >=1 ? "active" :"step-1"}`}> 1</div>
+      <div className={`${step>=2 ?"active" :"step-2"}`}>2</div>
+        <div className={`${step>=3 ? "active" :"step-3"}`}>3</div>
       </div>
 
-      <p class="message"></p>
+      <p className="message"></p>
 
-      <div class="buttons">
-        <button class="previous">Previous</button>
-        <button class="next"  onClick={()=>{setColorMe(ColorMe ==="#f7f7f7" &&"#7950f2" )}} >Next</button>
+      <div className="buttons">
+        <button className="previous" style={{backgroundColor:"#7950f2" , color:"#fff"}} onClick={handleprev}>Previous</button>
+        <button className="next"  style={{backgroundColor:"#7950f2" , color:"#fff"}}onClick={handlenext}> Next</button>
       </div>
     </div>
   );
