@@ -10,6 +10,7 @@ const messages = [
 
 export default function App() {
 const [step,setStep]=useState(1)
+const [isopen,setIsopen]=useState(true)
 
   const handlenext=()=>{
     setStep(step+1)
@@ -19,6 +20,9 @@ const [step,setStep]=useState(1)
   }
  
   return (
+    <>
+    <button className="close" onClick={()=>{setIsopen(!isopen)}}>close &times;</button>
+    { isopen &&
     <div className="steps">
       <div className="numbers">
         <div className={`${step >=1 ? "active" :"step-1"}`}> 1</div>
@@ -29,11 +33,14 @@ const [step,setStep]=useState(1)
       <p className="message">
         step{step}:{messages[step-1]}
       </p>
-
+      
       <div className="buttons">
+
         <button className="previous" style={{backgroundColor:"#7950f2" , color:"#fff"}} onClick={handleprev}>Previous</button>
         <button className="next"  style={{backgroundColor:"#7950f2" , color:"#fff"}}onClick={handlenext}> Next</button>
       </div>
     </div>
+}
+    </>
   );
 }
